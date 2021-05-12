@@ -1,0 +1,4 @@
+##Spring Configuration
+spring:
+  application:
+    name: HandsOnTest2

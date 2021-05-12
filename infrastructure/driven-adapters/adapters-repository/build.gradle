@@ -1,0 +1,5 @@
+dependencies {
+    implementation project(':domain-model')
+    compile project(":driven-adapters-rest-repository")
+    implementation 'org.springframework:spring-context:5.2.0.RELEASE'
+}
