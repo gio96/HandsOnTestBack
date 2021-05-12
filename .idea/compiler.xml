@@ -8,20 +8,17 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.12/48e4e5d60309ebd833bc528dcf77668eab3cd72c/lombok-1.18.12.jar" />
         </processorPath>
-        <module name="HandsOnTest2.driven-adapters-objects-utils.test" />
+        <module name="HandsOnTest2.domain-usecase.test" />
         <module name="HandsOnTest2.applications-hands.db-init.test" />
         <module name="HandsOnTest2.entry-points-web.test" />
-        <module name="HandsOnTest2.driven-adapters-rest-repository.test" />
-        <module name="HandsOnTest2.driven-adapters-adapters-repository.test" />
-        <module name="HandsOnTest2.applications-hands.db-init.main" />
-        <module name="HandsOnTest2.domain-usecase.test" />
-        <module name="HandsOnTest2.driven-adapters-objects-utils.main" />
         <module name="HandsOnTest2.driven-adapters-rest-repository.main" />
         <module name="HandsOnTest2.driven-adapters-adapters-repository.main" />
         <module name="HandsOnTest2.domain-usecase.main" />
         <module name="HandsOnTest2.domain-model.main" />
-        <module name="HandsOnTest2.domain-model.test" />
+        <module name="HandsOnTest2.driven-adapters-rest-repository.test" />
+        <module name="HandsOnTest2.driven-adapters-adapters-repository.test" />
         <module name="HandsOnTest2.entry-points-web.main" />
+        <module name="HandsOnTest2.applications-hands.db-init.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8" />

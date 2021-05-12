@@ -14,7 +14,7 @@ public class ClientUseCase {
 
     private final ClientGateway clientGateway;
 
-    public List<Employee> getAllEmployee() {
+    public List<Employee> getAllEmployees() {
         return getAllEmployeeWithTotalSalary.apply(clientGateway)
                 .collect(Collectors.toList());
     }

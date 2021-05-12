@@ -9,6 +9,8 @@ import org.example.rest.dto.EmployeeDto;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 @Repository
@@ -33,8 +35,16 @@ public class ClientGatewayImpl implements ClientGateway {
         employee.setRoleId(employeeDto.getRoleId());
         employee.setRoleName(employeeDto.getRoleName());
         employee.setRoleDescription(employeeDto.getRoleDescription());
-        employee.setHourlySalary(employeeDto.getHourlySalary());
-        employee.setMonthlySalary(employeeDto.getMonthlySalary());
+        employee.setHourlySalary(valueExist.apply(employeeDto.getHourlySalary()));
+        employee.setMonthlySalary(valueExist.apply(employeeDto.getMonthlySalary()));
         return employee;
     }
+
+    //TODO
+    public static final UnaryOperator<Long> valueExist = value -> {
+        if(Objects.isNull(value)){
+            return 0L;
+        }
+        return value;
+    };
 }

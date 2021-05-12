@@ -20,7 +20,7 @@ public class ClientController {
 
     @GetMapping()
     public List<Employee> getAllEmployees() {
-        return clientUseCase.getAllEmployee();
+        return clientUseCase.getAllEmployees();
     }
 
     @GetMapping(value = "/{idEmployee}")
