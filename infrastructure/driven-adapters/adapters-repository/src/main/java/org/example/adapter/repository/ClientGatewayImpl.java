@@ -37,7 +37,7 @@ public class ClientGatewayImpl implements ClientGateway {
                 .map(this::convertToEmployee)
                 .filter(employee -> employee.getId().equals(idEmployee))
                 .findAny()
-                .orElse(buildEmplyeeEmpty());
+                .orElse(buildEmployeeEmpty());
     }
 
     private Employee convertToEmployee(EmployeeDto employeeDto) {
@@ -53,7 +53,7 @@ public class ClientGatewayImpl implements ClientGateway {
         return employee;
     }
 
-    public Employee buildEmplyeeEmpty(){
+    public Employee buildEmployeeEmpty(){
         Employee employeeEmpty = new EmployeeMonthly();
         employeeEmpty.setId(null);
         employeeEmpty.setName(null);

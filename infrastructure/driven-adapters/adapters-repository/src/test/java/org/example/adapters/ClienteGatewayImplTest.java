@@ -37,7 +37,7 @@ public class ClienteGatewayImplTest {
                 .thenReturn(Collections.singletonList(employeeDto));
 
         //assert
-        Assert.assertEquals(0L, clientGatewayImpl.getAllEmployees().size());
+        Assert.assertEquals(1L, clientGatewayImpl.getAllEmployees().size());
 
         Mockito.verify(clientMasGlobal, Mockito.times(1)).getEmployeeService();
     }
@@ -61,7 +61,7 @@ public class ClienteGatewayImplTest {
     }
 
     @Test
-    public void getEmployeesServiceWithMonthlySalaryNullTest() {
+    public void getAllEmployeesServiceWithMonthlySalaryNullTest() {
         //arrange
         EmployeeDto employeeDto = EmployeeDto.builder().id(1)
                 .contractTypeName(ContractType.HourlySalaryEmployee)
@@ -74,6 +74,24 @@ public class ClienteGatewayImplTest {
 
         //assert
         Assert.assertEquals(new Long(0L), clientGatewayImpl.getAllEmployees().get(0).getMonthlySalary());
+
+        Mockito.verify(clientMasGlobal, Mockito.times(1)).getEmployeeService();
+    }
+
+    @Test
+    public void getEmployeeServiceEmptyTest() {
+        //arrange
+        EmployeeDto employeeDto = EmployeeDto.builder().id(1)
+                .contractTypeName(ContractType.HourlySalaryEmployee)
+                .hourlySalary(50000L)
+                .build();
+
+        //act
+        Mockito.when(clientMasGlobal.getEmployeeService())
+                .thenReturn(Collections.singletonList(employeeDto));
+
+        //assert
+        Assert.assertEquals(new Long(0L), clientGatewayImpl.getEmployee(1).getMonthlySalary());
 
         Mockito.verify(clientMasGlobal, Mockito.times(1)).getEmployeeService();
     }
