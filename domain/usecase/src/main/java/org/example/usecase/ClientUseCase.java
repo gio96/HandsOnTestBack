@@ -5,6 +5,7 @@ import org.example.entities.Employee;
 import org.example.gateway.ClientGateway;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,9 +21,11 @@ public class ClientUseCase {
     }
 
     public Employee getEmployee(Integer idEmployee) {
-        return getAllEmployeeWithTotalSalary.apply(clientGateway)
-                .filter(employee -> employee.getId().equals(idEmployee))
-                .findAny()
+        return Optional.ofNullable(clientGateway.getEmployee(idEmployee))
+                .map(employee -> {
+                    employee.calculateTotalSalary();
+                    return employee;
+                })
                 .orElse(null);
     }
 
@@ -31,4 +34,5 @@ public class ClientUseCase {
                 .stream()
                 .peek(Employee::calculateTotalSalary);
     };
+
 }

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ClientGateway {
     List<Employee> getAllEmployees();
+    Employee getEmployee(Integer idEmployee);
 }

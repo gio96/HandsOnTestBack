@@ -1,7 +1,9 @@
 package org.example.adapter.repository;
 
 import lombok.RequiredArgsConstructor;
+import org.example.entities.ContractType;
 import org.example.entities.Employee;
+import org.example.entities.EmployeeMonthly;
 import org.example.factory.EmployeeFactory;
 import org.example.gateway.ClientGateway;
 import org.example.rest.ClientMasGlobal;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ClientGatewayImpl implements ClientGateway {
 
+
     private final ClientMasGlobal clientMasGlobal;
 
     @Override
@@ -25,6 +28,16 @@ public class ClientGatewayImpl implements ClientGateway {
                 .stream()
                 .map(this::convertToEmployee)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Employee getEmployee(Integer idEmployee) {
+        return clientMasGlobal.getEmployeeService()
+                .stream()
+                .map(this::convertToEmployee)
+                .filter(employee -> employee.getId().equals(idEmployee))
+                .findAny()
+                .orElse(buildEmplyeeEmpty());
     }
 
     private Employee convertToEmployee(EmployeeDto employeeDto) {
@@ -40,11 +53,25 @@ public class ClientGatewayImpl implements ClientGateway {
         return employee;
     }
 
-    //TODO
+    public Employee buildEmplyeeEmpty(){
+        Employee employeeEmpty = new EmployeeMonthly();
+        employeeEmpty.setId(null);
+        employeeEmpty.setName(null);
+        employeeEmpty.setContractTypeName(null);
+        employeeEmpty.setRoleId(null);
+        employeeEmpty.setRoleName(null);
+        employeeEmpty.setRoleDescription(null);
+        employeeEmpty.setHourlySalary(0L);
+        employeeEmpty.setMonthlySalary(0L);
+        return employeeEmpty;
+    }
+
     public static final UnaryOperator<Long> valueExist = value -> {
         if(Objects.isNull(value)){
             return 0L;
         }
         return value;
     };
+
+
 }
