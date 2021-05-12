@@ -10,13 +10,14 @@
         </processorPath>
         <module name="HandsOnTest2.domain-usecase.test" />
         <module name="HandsOnTest2.applications-hands.db-init.test" />
-        <module name="HandsOnTest2.entry-points-web.test" />
         <module name="HandsOnTest2.driven-adapters-rest-repository.main" />
+        <module name="HandsOnTest2.entry-points-web.test" />
         <module name="HandsOnTest2.driven-adapters-adapters-repository.main" />
         <module name="HandsOnTest2.domain-usecase.main" />
         <module name="HandsOnTest2.domain-model.main" />
         <module name="HandsOnTest2.driven-adapters-rest-repository.test" />
         <module name="HandsOnTest2.driven-adapters-adapters-repository.test" />
+        <module name="HandsOnTest2.domain-model.test" />
         <module name="HandsOnTest2.entry-points-web.main" />
         <module name="HandsOnTest2.applications-hands.db-init.main" />
       </profile>

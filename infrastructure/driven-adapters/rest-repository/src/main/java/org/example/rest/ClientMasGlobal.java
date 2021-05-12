@@ -18,7 +18,7 @@ public class ClientMasGlobal {
 
     private final RestTemplate restTemplate;
 
-    public List<EmployeeDto> getClientService(){
+    public List<EmployeeDto> getEmployeeService(){
         return Arrays.stream(Objects.requireNonNull(restTemplate.getForObject(URLMASGLOBAL, EmployeeDto[].class)))
                 .collect(Collectors.toList());
     }

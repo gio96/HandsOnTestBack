@@ -21,7 +21,7 @@ public class ClientGatewayImpl implements ClientGateway {
 
     @Override
     public List<Employee> getAllEmployees() {
-        return clientMasGlobal.getClientService()
+        return clientMasGlobal.getEmployeeService()
                 .stream()
                 .map(this::convertToEmployee)
                 .collect(Collectors.toList());
