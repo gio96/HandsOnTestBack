@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.adapters.ClienteGatewayImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-12T21:57:11" hostname="DESKTOP-FG8HMOP" time="1.748">
+<testsuite name="org.example.adapters.ClienteGatewayImplTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-12T22:06:08" hostname="DESKTOP-FG8HMOP" time="1.903">
   <properties/>
-  <testcase name="getEmployeeServiceEmptyTest" classname="org.example.adapters.ClienteGatewayImplTest" time="1.748"/>
+  <testcase name="getEmployeeServiceEmptyTest" classname="org.example.adapters.ClienteGatewayImplTest" time="1.885"/>
+  <testcase name="getAllEmployeesServiceTest" classname="org.example.adapters.ClienteGatewayImplTest" time="0.009"/>
+  <testcase name="getEmployeesServiceWithHourlySalaryNullTest" classname="org.example.adapters.ClienteGatewayImplTest" time="0.003"/>
+  <testcase name="getAllEmployeesServiceWithMonthlySalaryNullTest" classname="org.example.adapters.ClienteGatewayImplTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,7 +1,6 @@
 package org.example.adapter.repository;
 
 import lombok.RequiredArgsConstructor;
-import org.example.entities.ContractType;
 import org.example.entities.Employee;
 import org.example.entities.EmployeeMonthly;
 import org.example.factory.EmployeeFactory;
@@ -14,6 +13,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Repository
 @RequiredArgsConstructor
@@ -24,17 +24,13 @@ public class ClientGatewayImpl implements ClientGateway {
 
     @Override
     public List<Employee> getAllEmployees() {
-        return clientMasGlobal.getEmployeeService()
-                .stream()
-                .map(this::convertToEmployee)
+        return getAllEmployeeRest()
                 .collect(Collectors.toList());
     }
 
     @Override
     public Employee getEmployee(Integer idEmployee) {
-        return clientMasGlobal.getEmployeeService()
-                .stream()
-                .map(this::convertToEmployee)
+        return getAllEmployeeRest()
                 .filter(employee -> employee.getId().equals(idEmployee))
                 .findAny()
                 .orElse(buildEmployeeEmpty());
@@ -53,7 +49,7 @@ public class ClientGatewayImpl implements ClientGateway {
         return employee;
     }
 
-    public Employee buildEmployeeEmpty(){
+    private Employee buildEmployeeEmpty() {
         Employee employeeEmpty = new EmployeeMonthly();
         employeeEmpty.setId(null);
         employeeEmpty.setName(null);
@@ -66,8 +62,14 @@ public class ClientGatewayImpl implements ClientGateway {
         return employeeEmpty;
     }
 
-    public static final UnaryOperator<Long> valueExist = value -> {
-        if(Objects.isNull(value)){
+    private Stream<Employee> getAllEmployeeRest() {
+        return clientMasGlobal.getEmployeeService()
+                .stream()
+                .map(this::convertToEmployee);
+    }
+
+    private static final UnaryOperator<Long> valueExist = value -> {
+        if (Objects.isNull(value)) {
             return 0L;
         }
         return value;
