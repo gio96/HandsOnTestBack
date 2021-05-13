@@ -29,6 +29,6 @@ WORKDIR /app
 EXPOSE 8080
 ## deberia correr gradlew build
 #RUN gradlew build --no-daemon
-ARG JAR_FILE=build/libs/applications-clean.db-init.jar
-COPY ${JAR_FILE} /app/correriasprueba.jar
-ENTRYPOINT ["java","-jar","/app/correriasprueba.jar"]
+ARG JAR_FILE=build/libs/applications-hands.db-init.jar
+COPY ${JAR_FILE} /app/handsOnTest.jar
+ENTRYPOINT ["java","-jar","/app/handsOnTest.jar"]
